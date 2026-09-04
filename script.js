@@ -15,10 +15,20 @@ sounds.forEach((sound) => {
 
     //add event listener to button, listens for click event
     btn.addEventListener('click', () => {
-        
+        stopSounds();
         document.getElementById(sound).play();
     });
     
     //add button to the DOM
     document.getElementById('buttons').appendChild(btn);
 });
+
+//function to stop sounds so that they don't overlap when clicked
+function stopSounds() {
+    sounds.forEach((sound) => {
+        const song = document.getElementById(sound);
+
+        song.pause();
+        song.currentTime = 0;
+    });
+}
